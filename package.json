@@ -15,5 +15,12 @@
         "System Manager",
         "document",
         "convert"
-    ]
+    ],
+    "bin": {
+        "ssm-convert": "./index.js"
+    },
+    "dependencies": {
+        "minimist": "^1.2.0",
+        "untildify": "^3.0.3"
+    }
 }
