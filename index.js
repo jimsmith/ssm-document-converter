@@ -6,24 +6,37 @@ const untildify = require('untildify');
 const argv = require('minimist')(process.argv.slice(2));
 
 
-console.dir(argv)
+//console.dir(argv)
 
 let validArgs = true;
 let input;
 let output;
+if (argv.h || argv.help) {
+    console.log(`
+Usage: ssm-convert [options]
+
+Converts AWS SSM document exported string from CLI to JSON
+    
+Options:
+  -h, --help        output usage information
+  -i, --input       input file
+  -o, --output      output file
+    `);
+    return;
+}
 if (!argv.i && !argv.input) {
     console.error("Missing Required Input -i || --input");
     validArgs = false;
 } else {
     input = argv.i || argv.input;
-    input = untildify(input);
+    input = path.normalize(untildify(input));
 }
 if (!argv.o && !argv.output) {
     console.error("Missing Required Output -i || --output");
     validArgs = false;
 } else {
     output = argv.o || argv.output;
-    output = untildify(output);
+    output = path.normalize(untildify(output));
 }
 if (!fs.existsSync(input)) {
     console.error(`Input file is not found: ${input}`);
@@ -54,12 +67,13 @@ try {
     console.error("Could not parse input");
     validArgs= false;
 }
-if (!parsedInput.Content) {
+try {
+    content = parsedInput.Content  
+} catch (e) {
     console.error("Input does not contain a \"Content\" property");
     validArgs = false;
-} else {
-    content = parsedInput.Content
 }
+
 
 if (validArgs) {
     console.log(`Converting ${input} to ${output}`)
