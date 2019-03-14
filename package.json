@@ -1,6 +1,6 @@
 {
     "name": "@u-clarkdeveloper/ssm-document-converter",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Converts AWS SSM document exported from CLI to JSON",
     "license": "MIT",
     "homepage": "https://github.com/u-clarkdeveloper/ssm-document-converter#readme",
