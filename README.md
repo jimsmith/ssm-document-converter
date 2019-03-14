@@ -40,7 +40,7 @@
 ### Convert CLI export content into json
     ssm-convert -i ~/AWS-AttachEBSVolume.json -o ~/AWS-AttachEBSVolume-output.json
 
-### #AWS-AttacheEBSVolume.json
+### #AWS-AttacheEBSVolume-output.json
 
     {
         "schemaVersion": "0.3", 

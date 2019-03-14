@@ -14,7 +14,8 @@
         "SSM",
         "System Manager",
         "document",
-        "convert"
+        "convert",
+        "CLI"
     ],
     "bin": {
         "ssm-convert": "./index.js"
